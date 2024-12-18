@@ -8,11 +8,11 @@
 <body>
     <div>
         <h1>{% block myhdg %} Welcome to our online car store {% endblock %}</h1>
-        {% block body_block %}*** {% endblock %}
+        {% block body_block %}***{% endblock %}
     </div>
     <div>
         <ul>
-            <li class="hbar1"><a href="http://127.0.0.1:8000/aboutus/">Find out about this site </a><br/></li>
+            <li class="hbar1"><a href="{% url 'primewheelsapp:aboutus' %}">Find out about this site </a><br/></li>
             <li class="hbar1"><a href="{% url 'primewheelsapp:homepage' %}">Click here to return to the home page </a><br/></li>
             <li class="hbar1"><a href="{% url 'primewheelsapp:vehicles' %}">Click here to see a list of vehicles </a><br/></li>
         </ul>
