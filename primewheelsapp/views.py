@@ -2,7 +2,9 @@ from django.http import HttpResponse
 from .models import CarType, Vehicle, LabMember
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-
+from django.views import View
+from django.urls import path
+from django.views.generic import ListView
 # def homepage(request):
 #     cartype_list = CarType.objects.all().order_by('id')
 #     cars_list = Vehicle.objects.all().order_by('-car_price')
@@ -50,12 +52,27 @@ def cardetail(request, cartype_no):
 #         response.write(para)
 #     return response
 
-def teammembers(request):
-    team_members = LabMember.objects.all().order_by('first_name')
-    response = HttpResponse()
-    heading = '<p>' + 'Team Members:' + '</p>'
-    response.write(heading)
-    for member in team_members:
-        para = '<p>' + str(member.first_name) + ' ' + str(member.last_name) + '</p>'
-        response.write(para)
-    return response
+def vehicles(request):
+    vehicle_list = Vehicle.objects.filter(inventory__gt=0)
+    return render(request, 'primewheelsapp/vehicles.html', {'vehicles': vehicle_list})
+
+def orderhere(request):
+    return render(request, 'primewheelsapp/order.html')
+# def teammembers(request):
+#     team_members = LabMember.objects.all().order_by('first_name')
+#     response = HttpResponse()
+#     heading = '<p>' + 'Team Members:' + '</p>'
+#     response.write(heading)
+#     for member in team_members:
+#         para = '<p>' + str(member.first_name) + ' ' + str(member.last_name) + '</p>'
+#         response.write(para)
+#     return response
+
+class TeamMembersView(ListView):
+    model = LabMember
+    template_name = 'primewheelsapp/team.html'  # This should be the path within the templates folder
+    context_object_name = 'team_members'
+
+    def get_queryset(self):
+        return LabMember.objects.all().order_by('first_name')
+

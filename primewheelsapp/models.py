@@ -7,6 +7,12 @@ class CarType(models.Model):
     def __str__(self):
         return self.name
     
+class Feature(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
 class Vehicle(models.Model):
     car_type = models.ForeignKey(CarType, related_name='vehicles', on_delete=models.CASCADE)
     car_name = models.CharField(max_length=200)
@@ -14,6 +20,7 @@ class Vehicle(models.Model):
     car_price = models.DecimalField(max_digits=10, decimal_places=4)
     inventory = models.PositiveIntegerField(default=10)
     instock = models.BooleanField(default=True)
+    features = models.ManyToManyField(Feature, related_name='vehicles')
 
     def __str__(self):
         return f"{self.car_type} {self.car_name}"

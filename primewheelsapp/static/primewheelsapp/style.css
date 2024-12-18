@@ -1,0 +1,59 @@
+/* Default styles */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles for <h1> tags */
+h1 {
+    color: #444;
+    font-size: 2em;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Class .hbar1 */
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}
+
+/* Additional styles */
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
